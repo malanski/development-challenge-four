@@ -1,0 +1,30 @@
+.header {
+    padding: 20px;
+    .logoHeader {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        padding: 10px;
+        .logoHeader {
+            width: 100%;
+            img {
+                
+
+            }
+        }    
+    }
+}
+@media screen and (max-width: 400px) {
+    .header {
+        padding: 5px;
+        .logoHeader {
+            img {
+                width: 100%;
+
+            }
+        }       
+    }
+}

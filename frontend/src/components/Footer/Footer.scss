@@ -1,0 +1,44 @@
+.footer {
+    margin-top: 100px;
+    background: black;
+    padding: 20px;
+    
+    color: white;
+    a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        list-style-type: none;
+     
+    }
+    .nav-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .logofooter {
+        width: 30%;
+        
+    }
+    h6 {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .footer {
+        padding: 10px;
+        .logoFooter {
+            img {
+                width: 80%;
+            }
+            
+        }       
+    }
+}
