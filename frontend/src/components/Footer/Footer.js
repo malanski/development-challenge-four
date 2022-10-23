@@ -28,6 +28,8 @@ export function Footer() {
                     <img src={medcloudLogo2} title='Medcloud' alt='Medcloud logo'></img>
                 </div>
             </div>
+            <br></br>
+            <hr></hr>
 
             <h6>Developed by Ulisses Malanski - 2022</h6>
 

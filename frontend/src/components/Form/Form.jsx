@@ -8,10 +8,16 @@ const FormStyles = styled("section")(({ theme }) => ({
     width: '100%',
     form: {
         width: '426px',
+        padding: '5px',
+        border:'1px solid rgb(167, 167, 167)',
+        borderRadius:'10px',
 
+        h3: {
+            textAlign: 'left',
+        },
        div:{
         width: '100%',
-
+       
         div: {
             label: {
                 textAlign: 'center',
@@ -37,6 +43,7 @@ const FormStyles = styled("section")(({ theme }) => ({
             width: '99%',
             marginLeft: 'auto',
             marginRight: 'auto',
+            border: 'none',
 
             div: {
                 margin: 0,
@@ -57,7 +64,7 @@ const FormStyles = styled("section")(({ theme }) => ({
 export default function Form() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const validateForm = (d) => {
-        alert(d.patientName + d.patientAddress + ". Email: " + d.seuEmail + " Telefone: " + d.patientPhone + ' seu endereço é ')
+        alert(d.patientName + ". Email: " + d.seuEmail + " Telefone: " + d.patientPhone + ' seu endereço é '+ d.streetAddress )
     }
     
     return (
@@ -116,27 +123,87 @@ export default function Form() {
 
                 </div>
 
+                <h3>Patient Address</h3>
+                
                 <div>
                     <TextField
                         variant="outlined"
                         required
+                        htmlFor='country'
+                        label="Country"  
+                    />
+                </div>
+
+                <div>
+                    <TextField
+                        variant="outlined"
+                        required
+                        htmlFor='zipCode'
+                        label="Zip/ postcode"  
+                    />
+                </div>
+                
+                <div>
+                    <TextField
+                        variant="outlined"
+                        required
+                        htmlFor='county'
+                        label=" County (State)"  
+                    />
+                </div>
+                
+                <div>
+                    <TextField
+                        variant="outlined"
+                        required
+                        htmlFor='city'
+                        label="City"  
+                    />
+                </div>
+                <div>
+                    <TextField
+                        variant="outlined"
+                        required
+                        htmlFor='streetAddress'
+                        label="Street address"
+                        {...register('streetAddress', { required: true, pattern: /^[A-Za-z-0-9]+$/i })}
+                    />
+                    {errors.streetAddress && errors.streetAddress.type === 'required' && <p>Type the street's name</p>}
+                    {errors.streetAddress && errors.streetAddress.type === 'pattern' && <p>The street's name should contain only letters</p>}
+                </div>
+                               
+                <div>
+                    <TextField
+                        variant="outlined"
+                        htmlFor='aptSuite'
+                        label="Apt, suite, etc (optional)"
+                      
+                    />
+                    
+                </div>
+                
+                {/* <div>
+                    <TextField
+                        variant="outlined"
+                        required
                         htmlFor='patientAddress'
-                        label="Patient address"
+                        label="Apt, suite, etc (optional)
                         {...register('patientAddress', { required: true, pattern: /^[A-Za-z]+$/i })}
                     />
                     {errors.patientAddress && errors.patientAddress.type === 'required' && <p>Type the patient's name</p>}
                     {errors.patientAddress && errors.patientAddress.type === 'pattern' && <p>The patient's name should contain only letters</p>}
-                </div>
+                </div> */}
 
                 <Button
                     sx={{
                         width: '183px',
                         fontSize: '23px',
                         fontWeight: '700',
+                        background: '#2B93DD'
                     }}
                     variant="contained"
                     type='submit'>
-                    Enviar
+                    Submit
                 </Button>
             </Box>
 
