@@ -44,7 +44,7 @@ SSH
 `git clone git@github.com:malanski/development-challenge-four.git`
 # 📷 App Demonstrations
 
-<img src="src/Images/page-home.png" title="App screenshot"/>
+<img src="src/assets/images/page-home.png" title="App screenshot"/>
 
 
 
