@@ -13,7 +13,7 @@ export function PatientRegister () {
             <h2>Patient Register</h2>
 
             <Form />
-            
+
             <div className='registerImage'>
                 <img src={doctor} alt='A doctor with his patient'></img>
                 <img src={xray} alt='A doctor with his patient'></img>

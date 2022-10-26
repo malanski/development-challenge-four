@@ -2,22 +2,61 @@
 import { Box, Button, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 
+// Form validation schema
+const schema = yup.object().shape({
+    patientName: yup.string().required("Patient name should be required"),
+    patientAge: yup.number().positive("Patient age should be a positive number!").integer("Patient age should be a integer number!").required(),
+    patientEmail: yup.string().email("Patient email must be a valid email!").required("Patient email should be required!"),
+    country: yup.string().required("Patient Country should be required!"),
+    zipCode: yup.number().required("Patient Zip Code should be required!"),
+    county: yup.string().required("Patient county should be required!"),
+    city: yup.string().required("Patient city name should be required!"),
+    streetAddress: yup.string().required("Patient street address should be required!"),
+    aptSuite: yup.string(),
+})
+
+function Trim(strTexto) { 
+    // Substitúi os espaços vazios no inicio e no fim da string por vazio.
+        return strTexto.replace(/^s+|s+$/g, '');
+    }
+
+// Função para validação de CEP.
+function IsCEP(strCEP, blnVazio) {
+    // Caso o CEP não esteja nesse formato ele é inválido!
+    var objER = /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/;
+    strCEP = Trim(strCEP)
+
+    if(strCEP.length > 0) {
+        if(objER.test(strCEP))
+        return true;
+        else return false;
+    } else return blnVazio;
+} 
+
+// Styles and responsive with MUI styled 
 const FormStyles = styled("section")(({ theme }) => ({
     width: '100%',
     form: {
         width: '426px',
-        padding: '5px',
+        padding: '20px',
         border:'1px solid rgb(167, 167, 167)',
         borderRadius:'10px',
 
         h3: {
             textAlign: 'left',
         },
+        p: {
+            color: 'red',
+            fontSize: '20px',
+        },
+
        div:{
         width: '100%',
-       
+        position: 'relative',
         div: {
             label: {
                 textAlign: 'center',
@@ -30,23 +69,21 @@ const FormStyles = styled("section")(({ theme }) => ({
                 background: '#F4F7FC',
                 marginBottom: '11px',
                 height: 'auto',
-
             },
         },
        }
     },
 
 
-
+    // Responsie Styles
     [theme.breakpoints.down("tablet")]: {
         form: {
-            width: '99%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            border: 'none',
+            width: '95%',
+            margin: '20px 0 0 0',
 
+            border: 'none',
+            padding: '2.5%',
             div: {
-                margin: 0,
                 div: {
                     label: {
 
@@ -54,19 +91,17 @@ const FormStyles = styled("section")(({ theme }) => ({
                 }
             }
         },
-
     },
-
-
-
 }));
 
 export default function Form() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const validateForm = (d) => {
-        alert(d.patientName + ". Email: " + d.seuEmail + " Telefone: " + d.patientPhone + ' seu endereço é '+ d.streetAddress )
+
+    const { register, formState: { errors }, handleSubmit } = useForm({resolver: yupResolver(schema)});
+
+    const submitForm = (data) => {
+        console.log(data)
     }
-    
+
     return (
         <FormStyles >
             <Box
@@ -74,52 +109,43 @@ export default function Form() {
                 sx={{
                     margin: '31px auto 30px auto',
                 }}
-                onSubmit={handleSubmit(validateForm)}
+               onSubmit={handleSubmit(submitForm)} 
             >
                 <div>
                     <TextField
                         variant="outlined"
                         required
                         htmlFor='patientName'
+                        name='patientName'
                         label="Patient's name"
-                        {...register('patientName', { required: true, pattern: /^[A-Za-z]+$/i })}
+                        {...register('patientName')}
+                        // {...register('test', { required: true })}
                     />
-                    {errors.patientName && errors.patientName.type === 'required' && <p>Type the patient's name</p>}
-                    {errors.patientName && errors.patientName.type === 'pattern' && <p>The patient's name should contain only letters</p>}
+                    <p> {errors.patientName?.message } </p>
+                </div>
+
+                <div>
+                    <TextField
+                        variant="outlined"
+                        required
+                        htmlFor='patientAge'
+                        name='patientAge'
+                        label="Patient's age"
+                        {...register('patientAge')}
+                    />
+                    <p> {errors.patientAge?.message } </p>
                 </div>
                 
-
-         
                 <div>
                     <TextField
                         variant="outlined"
                         required
-                        htmlFor='seuEmail'
+                        htmlFor='patientEmail'
+                        name='patientEmail'
                         label="Patient email"
-                        {...register('seuEmail', { required: true, pattern: /\S+@\S+\.\S+/ })}
+                        {...register('patientEmail')}
                     />
-                    {errors.seuEmail && errors.seuEmail.type === 'required' && <p>Type the patient's email.</p>}
-                    {errors.seuEmail && errors.seuEmail.type === 'pattern' && <p>Please type a valid email.</p>}
-
-                </div>
-
-                <div>
-                    <TextField
-                        variant="outlined"
-                        required
-                        htmlFor='patientPhone'
-                        label="Patient phone number"
-                        // type='number'
-                        max="9999999999999"
-                        min="99999999999"
-                        
-                        {...register('patientPhone', { pattern:/[0-9]+/, required: true })}
-                    />
-                    
-                    {errors.patientPhone && errors.patientPhone.type === 'pattern' && <p>O número de telefone deve conter apenas números.</p>}
-                    {errors.patientPhone && errors.patientPhone.type === 'required' && <p>Por favor digite seu número de telefone.</p>}
-                                      
-                    {errors.patientPhone && errors.patientPhone.type === 'minLength' && <p>O seu número de telefone deve ter 11 dígitos.</p>}
+                    <p> {errors.patientEmail?.message } </p>
 
                 </div>
 
@@ -130,8 +156,12 @@ export default function Form() {
                         variant="outlined"
                         required
                         htmlFor='country'
-                        label="Country"  
+                        name='country'
+                        label="Country"
+                        {...register('country')}
                     />
+                    <p> {errors.country?.message } </p>
+
                 </div>
 
                 <div>
@@ -139,8 +169,12 @@ export default function Form() {
                         variant="outlined"
                         required
                         htmlFor='zipCode'
-                        label="Zip/ postcode"  
+                        name='zipCode'
+                        label="Zip/ postcode"
+                        {...register('zipCode')}
                     />
+                    <p> {errors.zipCode?.message } </p>
+
                 </div>
                 
                 <div>
@@ -148,8 +182,12 @@ export default function Form() {
                         variant="outlined"
                         required
                         htmlFor='county'
-                        label=" County (State)"  
+                        name='county'
+                        label=" County (State)"
+                        {...register('county')}
                     />
+                    <p> {errors.county?.message } </p>
+
                 </div>
                 
                 <div>
@@ -157,42 +195,38 @@ export default function Form() {
                         variant="outlined"
                         required
                         htmlFor='city'
-                        label="City"  
+                        name='city'
+                        label="City"
+                        {...register('city')}
                     />
+                    <p> {errors.city?.message } </p>
+
                 </div>
+
                 <div>
                     <TextField
                         variant="outlined"
                         required
                         htmlFor='streetAddress'
+                        name='streetAddress'
                         label="Street address"
-                        {...register('streetAddress', { required: true, pattern: /^[A-Za-z-0-9]+$/i })}
+                        {...register('streetAddress')}
                     />
-                    {errors.streetAddress && errors.streetAddress.type === 'required' && <p>Type the street's name</p>}
-                    {errors.streetAddress && errors.streetAddress.type === 'pattern' && <p>The street's name should contain only letters</p>}
+                    <p> {errors.streetAddress?.message } </p>
+
                 </div>
                                
                 <div>
                     <TextField
                         variant="outlined"
                         htmlFor='aptSuite'
+                        name='aptSuite'
                         label="Apt, suite, etc (optional)"
-                      
+                        {...register('aptSuite')}
                     />
+                    <p> {errors.aptSuite?.message } </p>
                     
                 </div>
-                
-                {/* <div>
-                    <TextField
-                        variant="outlined"
-                        required
-                        htmlFor='patientAddress'
-                        label="Apt, suite, etc (optional)
-                        {...register('patientAddress', { required: true, pattern: /^[A-Za-z]+$/i })}
-                    />
-                    {errors.patientAddress && errors.patientAddress.type === 'required' && <p>Type the patient's name</p>}
-                    {errors.patientAddress && errors.patientAddress.type === 'pattern' && <p>The patient's name should contain only letters</p>}
-                </div> */}
 
                 <Button
                     sx={{
