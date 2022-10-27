@@ -5,12 +5,18 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-
+const today = new Date();
 // Form validation schema
 const schema = yup.object().shape({
-    patientName: yup.string().required("Patient name should be required"),
+    patientName: yup.string().min(2,"Patient name should have 2 characters or more")
+    .max(60,"Patient name should be at maximum 60 characters long").required("Patient name should be required"),
+
+    // birthDate: yup.date().transform(parseDateString).max(today).required("Patient birth date should be required"),
+    birthDate: yup.date().max(today).required("Patient birth date should be required"),
+
     patientAge: yup.number().positive("Patient age should be a positive number!").integer("Patient age should be a integer number!").required(),
     patientEmail: yup.string().email("Patient email must be a valid email!").required("Patient email should be required!"),
+    // Address
     country: yup.string().required("Patient Country should be required!"),
     zipCode: yup.number().required("Patient Zip Code should be required!"),
     county: yup.string().required("Patient county should be required!"),
@@ -124,6 +130,18 @@ export default function Form() {
                     <p> {errors.patientName?.message } </p>
                 </div>
 
+                <div>
+                    <TextField
+                        variant="outlined"
+                        required
+                        htmlFor='birthDate'
+                        name='birthDate'
+                        type='date'
+                        label="Patient's birth date"
+                        {...register('birthDate')}
+                    />
+                    <p> {errors.birthDate?.message } </p>
+                </div>
                 <div>
                     <TextField
                         variant="outlined"
