@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 // const mongoose = require('../database');
 
-const userName = 'testeUser';
-const password = '6u1jnm0o0vAxuI0j';
-const url = `mongodb+srv://${userName}:${password}@cluster0.fw4xxr0.mongodb.net/?retryWrites=true&w=majority`;
+const userName = 'ulisses';
+const password = 'Tvm7HQSqEiirEAg';
+// const url = `mongodb+srv://${userName}:${password}@cluster0.vphfkrk.mongodb.net/?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${userName}:${password}@cluster0.vphfkrk.mongodb.net/?retryWrites=true&w=majority`;
+          // mongodb+srv://ulisses:<password>@cluster0.vphfkrk.mongodb.net/?retryWrites=true&w=majority
 
 
 mongoose.connect(url, {},  (error) => {

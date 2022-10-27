@@ -15,14 +15,16 @@ const schema = yup.object().shape({
     birthDate: yup.date().max(today).required("Patient birth date should be required"),
 
     patientAge: yup.number().positive("Patient age should be a positive number!").integer("Patient age should be a integer number!").required(),
+
     patientEmail: yup.string().email("Patient email must be a valid email!").required("Patient email should be required!"),
-    // Address
+    
+    // Address Validation
     country: yup.string().required("Patient Country should be required!"),
     zipCode: yup.number().required("Patient Zip Code should be required!"),
     county: yup.string().required("Patient county should be required!"),
     city: yup.string().required("Patient city name should be required!"),
     streetAddress: yup.string().required("Patient street address should be required!"),
-    aptSuite: yup.string(),
+    addition: yup.string(),
 })
 
 function Trim(strTexto) { 
@@ -228,6 +230,7 @@ export default function Form() {
                         htmlFor='streetAddress'
                         name='streetAddress'
                         label="Street address"
+                        placeholder='Rua Dos Bobos, n° 0, Bairro'
                         {...register('streetAddress')}
                     />
                     <p> {errors.streetAddress?.message } </p>
@@ -237,12 +240,12 @@ export default function Form() {
                 <div>
                     <TextField
                         variant="outlined"
-                        htmlFor='aptSuite'
-                        name='aptSuite'
+                        htmlFor='addition'
+                        name='addition'
                         label="Apt, suite, etc (optional)"
-                        {...register('aptSuite')}
+                        {...register('addition')}
                     />
-                    <p> {errors.aptSuite?.message } </p>
+                    <p> {errors.addition?.message } </p>
                     
                 </div>
 

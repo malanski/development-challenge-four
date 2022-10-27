@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
         require: true,    
     },
     birthDate: {
-        type: Date,
+        type: String,
         require: true,    
     }, 
     email: {
@@ -15,33 +15,29 @@ const UserSchema = new mongoose.Schema({
         unique: true
     }, 
     address: {
-        cep: {
+        zipCode: {
             type: String,
             require: true,
         },
-        logradouro: {
+        streetAddress: {
             type: String,
             require: true,
         },
-        numero: {
+        city: {
             type: String,
             require: true,
         },
-        bairro: {
+        county: {
             type: String,
             require: true,
         },
-        cidade: {
-            type: String,
-            require: true,
-        },
-        uf: {
-            type: String,
-            require: true,
-        },
-        complemento: {
+        addition: {
             type: String,
         }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
     } 
 });
 

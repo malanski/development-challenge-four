@@ -8,6 +8,6 @@ app.use(express.json());
 // app.use('/', userControllers)
 app.use('/', userControllers)
 
-app.listen(300, () => {
+app.listen(3030, () => {
     console.log('The server is running')
 })
