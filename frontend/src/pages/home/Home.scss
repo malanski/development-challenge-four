@@ -1,0 +1,22 @@
+.home {
+    .homeImage {
+        display: flex;
+    
+        img {
+            // max-width: 25%;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .home {
+        padding: 0;
+        .homeImage {
+            // width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+
+        }       
+    }
+}

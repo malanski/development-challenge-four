@@ -1,5 +1,6 @@
 import './Header.scss'
 import medcloudLogo from '../../assets/images/medcloud.png'
+import { Nav } from '../Nav'
 
 
 export function Header() {
@@ -13,6 +14,9 @@ export function Header() {
                 </a>
             </div>
             <hr></hr>
+            <Nav />
+            <hr></hr>
+
         </div>
     )
 }

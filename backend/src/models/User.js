@@ -19,7 +19,11 @@ const UserSchema = new mongoose.Schema({
             type: String,
             require: true,
         },
-        streetAddress: {
+        country: {
+            type: String,
+            require: true,
+        },        
+        county: {
             type: String,
             require: true,
         },
@@ -27,10 +31,10 @@ const UserSchema = new mongoose.Schema({
             type: String,
             require: true,
         },
-        county: {
+        streetAddress: {
             type: String,
             require: true,
-        },
+        },        
         addition: {
             type: String,
         }

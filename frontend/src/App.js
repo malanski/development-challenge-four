@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './components/responsive';
@@ -14,6 +14,7 @@ import { Footer } from './components/Footer';
 import { Home } from './pages/home'
 import { Register } from './pages/register'
 import { ViewPatients } from './pages/viewPatients'
+import { EditPatient } from './pages/editPatient';
 
 function App() {
   return (
@@ -28,10 +29,10 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/register' element={<Register />} />
               <Route path='/viewPatients' element={<ViewPatients />} />
+              <Route path='/editPatient' element={<EditPatient />} />
             </Routes>
           </main>
 
-          {/* <PatientRegister component={PatientRegister} exact /> */}
 
           <Footer component={Footer} exact />
         </ThemeProvider>
