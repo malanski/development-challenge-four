@@ -12,16 +12,14 @@ import * as yup from 'yup';
 const today = new Date();
 // Form validation schema
 const schema = yup.object().shape({
-    patientName: yup.string().min(2,"Patient name should have 2 characters or more")
-    .max(60,"Patient name should be at maximum 60 characters long").required("Patient name should be required"),
+    patientName: yup.string().min(2, "Patient name should have 2 characters or more")
+        .max(60, "Patient name should be at maximum 60 characters long").required("Patient name should be required"),
 
     // birthDate: yup.date().transform(parseDateString).max(today).required("Patient birth date should be required"),
     birthDate: yup.date().max(today).required("Patient birth date should be required"),
 
-    patientAge: yup.number().positive("Patient age should be a positive number!").integer("Patient age should be a integer number!").required(),
-
     patientEmail: yup.string().email("Patient email must be a valid email!").required("Patient email should be required!"),
-    
+
     // Address Validation
     country: yup.string().required("Patient Country should be required!"),
     zipCode: yup.number().required("Patient Zip Code should be required!"),
@@ -36,10 +34,12 @@ const schema = yup.object().shape({
 const FormStyles = styled("section")(({ theme }) => ({
     width: '100%',
     form: {
+        background: 'grey',
+        color: 'white',
         width: '426px',
         padding: '20px',
-        border:'1px solid rgb(167, 167, 167)',
-        borderRadius:'10px',
+        border: '1px solid rgb(167, 167, 167)',
+        borderRadius: '10px',
 
         h3: {
             textAlign: 'left',
@@ -49,24 +49,24 @@ const FormStyles = styled("section")(({ theme }) => ({
             fontSize: '20px',
         },
 
-       div:{
-        width: '100%',
-        position: 'relative',
         div: {
-            label: {
-                textAlign: 'center',
-                // width: 'auto',
-                width: '99%',
-                borderRadius: '10px 10px 0 0',
-                background: '#F4F7FC',
-            },
+            width: '100%',
+            position: 'relative',
             div: {
-                background: '#F4F7FC',
-                marginBottom: '11px',
-                height: 'auto',
+                label: {
+                    textAlign: 'center',
+                    // width: 'auto',
+                    width: '99%',
+                    borderRadius: '10px 10px 0 0',
+                    background: '#F4F7FC',
+                },
+                div: {
+                    background: '#F4F7FC',
+                    marginBottom: '11px',
+                    height: 'auto',
+                },
             },
-        },
-       }
+        }
     },
 
 
@@ -91,33 +91,7 @@ const FormStyles = styled("section")(({ theme }) => ({
 
 export default function EditForm() {
 
-    // const { id } = useParams();
-
-    // const [dataApi, setDataState] = useState({
-    //     name: '',
-    //     birthDate: '',
-    //     email: '',
-    //     address: {
-    //         zipCode: '',
-    //         country: '',
-    //         county: '',
-    //         city: '',
-    //         streetAddress: '',
-    //         addition: '',
-    //     },
-        
-    // })
-
-    // useEffect(() => {
-    //     PatientApi.getPatientById(id).then(({ data }) => {
-    //         console.log(data)
-    //         setDataState(data);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });
-    // }, [id]);
-
-    const { register, formState: { errors }, handleSubmit } = useForm({resolver: yupResolver(schema)});
+    const { register, formState: { errors }, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
     const submitForm = (data) => {
         console.log(data)
@@ -130,7 +104,7 @@ export default function EditForm() {
                 sx={{
                     margin: '31px auto 30px auto',
                 }}
-               onSubmit={handleSubmit(submitForm)} 
+                onSubmit={handleSubmit(submitForm)}
             >
                 <div>
                     <TextField
@@ -140,9 +114,9 @@ export default function EditForm() {
                         name='patientName'
                         label="Patient's name"
                         {...register('patientName')}
-                        // {...register('test', { required: true })}
+                    // {...register('test', { required: true })}
                     />
-                    <p> {errors.patientName?.message } </p>
+                    <p> {errors.patientName?.message} </p>
                 </div>
 
                 <div>
@@ -155,20 +129,9 @@ export default function EditForm() {
                         label="Patient's birth date"
                         {...register('birthDate')}
                     />
-                    <p> {errors.birthDate?.message } </p>
+                    <p> {errors.birthDate?.message} </p>
                 </div>
-                <div>
-                    <TextField
-                        variant="outlined"
-                        required
-                        htmlFor='patientAge'
-                        name='patientAge'
-                        label="Patient's age"
-                        {...register('patientAge')}
-                    />
-                    <p> {errors.patientAge?.message } </p>
-                </div>
-                
+
                 <div>
                     <TextField
                         variant="outlined"
@@ -178,12 +141,12 @@ export default function EditForm() {
                         label="Patient email"
                         {...register('patientEmail')}
                     />
-                    <p> {errors.patientEmail?.message } </p>
+                    <p> {errors.patientEmail?.message} </p>
 
                 </div>
 
                 <h3>Patient Address</h3>
-                
+
                 <div>
                     <TextField
                         variant="outlined"
@@ -193,7 +156,7 @@ export default function EditForm() {
                         label="Country"
                         {...register('country')}
                     />
-                    <p> {errors.country?.message } </p>
+                    <p> {errors.country?.message} </p>
 
                 </div>
 
@@ -206,10 +169,10 @@ export default function EditForm() {
                         label="Zip/ postcode"
                         {...register('zipCode')}
                     />
-                    <p> {errors.zipCode?.message } </p>
+                    <p> {errors.zipCode?.message} </p>
 
                 </div>
-                
+
                 <div>
                     <TextField
                         variant="outlined"
@@ -219,10 +182,10 @@ export default function EditForm() {
                         label=" County (State)"
                         {...register('county')}
                     />
-                    <p> {errors.county?.message } </p>
+                    <p> {errors.county?.message} </p>
 
                 </div>
-                
+
                 <div>
                     <TextField
                         variant="outlined"
@@ -232,7 +195,7 @@ export default function EditForm() {
                         label="City"
                         {...register('city')}
                     />
-                    <p> {errors.city?.message } </p>
+                    <p> {errors.city?.message} </p>
 
                 </div>
 
@@ -246,10 +209,10 @@ export default function EditForm() {
                         placeholder='Rua Dos Bobos, n° 0, Bairro'
                         {...register('streetAddress')}
                     />
-                    <p> {errors.streetAddress?.message } </p>
+                    <p> {errors.streetAddress?.message} </p>
 
                 </div>
-                               
+
                 <div>
                     <TextField
                         variant="outlined"
@@ -258,20 +221,21 @@ export default function EditForm() {
                         label="Apt, suite, etc (optional)"
                         {...register('addition')}
                     />
-                    <p> {errors.addition?.message } </p>
-                    
+                    <p> {errors.addition?.message} </p>
+
                 </div>
 
                 <Button
                     sx={{
-                        width: '183px',
-                        fontSize: '23px',
+                        width: '193px',
+                        fontSize: '20px',
                         fontWeight: '700',
                         background: '#2B93DD'
                     }}
+                    
                     variant="contained"
                     type='submit'>
-                    Submit
+                    Save Changes
                 </Button>
             </Box>
 

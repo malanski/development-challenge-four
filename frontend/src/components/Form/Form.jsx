@@ -14,8 +14,6 @@ const schema = yup.object().shape({
     // birthDate: yup.date().transform(parseDateString).max(today).required("Patient birth date should be required"),
     birthDate: yup.date().max(today).required("Patient birth date should be required"),
 
-    patientAge: yup.number().positive("Patient age should be a positive number!").integer("Patient age should be a integer number!").required(),
-
     patientEmail: yup.string().email("Patient email must be a valid email!").required("Patient email should be required!"),
     
     // Address Validation
@@ -144,18 +142,7 @@ export default function Form() {
                     />
                     <p> {errors.birthDate?.message } </p>
                 </div>
-                <div>
-                    <TextField
-                        variant="outlined"
-                        required
-                        htmlFor='patientAge'
-                        name='patientAge'
-                        label="Patient's age"
-                        {...register('patientAge')}
-                    />
-                    <p> {errors.patientAge?.message } </p>
-                </div>
-                
+                                
                 <div>
                     <TextField
                         variant="outlined"

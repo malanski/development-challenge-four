@@ -3,9 +3,7 @@ import { PatientRegister } from "../../components/PatientRegister/PatientRegiste
 export const Register = (props) => {
     return (
         <div>
-            <h2>Register</h2>
-            <PatientRegister component={PatientRegister} exact />
-            
+             <PatientRegister component={PatientRegister} exact />
         </div>
     )
 }

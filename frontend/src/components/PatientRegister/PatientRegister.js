@@ -1,4 +1,5 @@
 import './PatientRegister.scss'
+import AddIcon from '@mui/icons-material/Add';
 
 // Images
 
@@ -9,7 +10,7 @@ export function PatientRegister () {
     return (
         <div className='register'>
             
-            <h2>Patient Register</h2>
+            <h2><AddIcon /> Add new Patient <AddIcon /></h2>
 
             <Form />
 

@@ -3,18 +3,20 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: "auto",
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
   
 export default function ConfirmDeletePatient() {
     const [open, setOpen] = React.useState(false);
@@ -22,7 +24,7 @@ export default function ConfirmDeletePatient() {
     const handleClose = () => setOpen(false);
     return (
         <div>
-            <Button onClick={handleOpen}>Delete</Button>
+            <Button onClick={handleOpen}  title="Delete"><DeleteForeverTwoToneIcon /></Button>
             
             <Modal
               open={open}
@@ -37,17 +39,21 @@ export default function ConfirmDeletePatient() {
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   Are you sure you want to <big>Delete</big> this patient's record?
             
-                  <Button variant="contained"
-                    onClick={handleClose}
-                    color="success">
-                    Confirm Delete
-                  </Button>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Button sx={{ width: '176px', height: '40px', margin: '10px 10px 0 0'}} variant="contained"
+                      onClick={handleClose}
+                      color="success">
+                      <DeleteForeverTwoToneIcon />
+                      Confirm Delete
+                    </Button>
 
-                  <Button variant="outlined"
-                    color="error"
-                    onClick={handleClose}>
-                    Cancel
-                  </Button>
+                    <Button sx={{ width: '176px', height: '40px', margin: '10px 0 0 0' }} variant="outlined"
+                      color="error"
+                      onClick={handleClose}>
+                      <CloseIcon />
+                      Cancel
+                    </Button>
+                  </div>
                   
                 </Typography>
               </Box>

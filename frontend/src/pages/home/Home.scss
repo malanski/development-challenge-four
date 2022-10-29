@@ -1,4 +1,10 @@
 .home {
+    h2 {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .homeImage {
         display: flex;
     
@@ -7,6 +13,7 @@
             width: 100%;
         }
     }
+
 }
 
 @media screen and (max-width: 500px) {

@@ -114,7 +114,7 @@ router.delete('/consult', async(req, res) => {
     } catch (error) {
         throw res.status(400).json({
             error: true,
-            message: error.message + "alguma coisa"
+            message: error.message 
         });
     }
 })

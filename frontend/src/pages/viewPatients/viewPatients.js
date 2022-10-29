@@ -1,8 +1,7 @@
 import './viewPatients.scss';
-import PatientCard from "../../components/PatientCard/PatientCard";
-
+import PatientCard from "../../components/ParientCard/PatientCard";
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import { useState, useEffect } from 'react';
-import { PatientApi } from '../../services/api';
 
 export const ViewPatients = () => {
     let [dataApi, setDataApi] = useState([]);
@@ -28,7 +27,7 @@ export const ViewPatients = () => {
 
     return (
         <div>
-            <h2>Patients list view</h2>
+            <h2><FormatListNumberedIcon /> Patients list view <FormatListNumberedIcon /></h2>
 
             <div className="patients-view-list">
                 {dataApi.map((data, index) => <PatientCard dataApi={data} index={index} />)}

@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 
 // Navigation
 import { Home } from './pages/home'
+import { About } from './pages/about'
 import { Register } from './pages/register'
 import { ViewPatients } from './pages/viewPatients'
 import { EditPatient } from './pages/editPatient';
@@ -27,6 +28,7 @@ function App() {
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
               <Route path='/register' element={<Register />} />
               <Route path='/viewPatients' element={<ViewPatients />} />
               <Route path='/editPatient' element={<EditPatient />} />

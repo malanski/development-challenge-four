@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute',
@@ -23,7 +25,9 @@ export default function ConfirmEditPatient() {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Button onClick={handleOpen}>Edit</Button>
+      <Button onClick={handleOpen} title="Edit">
+        <EditIcon/>
+      </Button>
 
       <Modal
         open={open}
@@ -37,16 +41,21 @@ export default function ConfirmEditPatient() {
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
 
-            <Button variant="contained"
-              // onClick={handleClose}
-              color="success">
-              <Link to="/editPatient">Enter Edit</Link>
-            </Button>
-            <Button variant="outlined"
-              color="error"
-              onClick={handleClose}>
-              Cancel
-            </Button>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Button  sx={{ width: '176px', height: '40px', margin: '10px 10px 0 0'}} variant="contained"
+                // onClick={handleClose}
+                color="success">
+                <EditIcon/>
+                <Link to="/editPatient">Enter Edit</Link>
+              </Button>
+
+              <Button  sx={{ width: '176px', height: '40px', margin: '10px 0 0 0' }} variant="outlined"
+                color="error"
+                onClick={handleClose}>
+                <CloseIcon />
+                Cancel
+              </Button>
+            </div>
 
           </Typography>
         </Box>

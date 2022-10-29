@@ -1,6 +1,10 @@
 import './Footer.scss'
 import medcloudLogo2 from '../../assets/images/medcloud2.png'
-
+import GitHubIcon from '@mui/icons-material/GitHub';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
     return (
@@ -10,18 +14,23 @@ export function Footer() {
                 <ul className="social2">
                     <li>
                         <a href="https://github.com/malanski" title="github" target="_blank" rel="noreferrer">
-                            Github
+                            <GitHubIcon/>&ensp;&ensp;Github
                         </a>
                     </li>
                     <li>
                         <a href="https://malanski.github.io/portfolio/" title="portfolio" target="_blank" rel="noreferrer">
-                            Portfolio
+                            <ConstructionIcon />&ensp;&ensp;Portfolio
                         </a>
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/in/ulisses-malanski" title="linkedin" target="_blank" rel="noreferrer">
-                            Linkedin
+                           <LinkedInIcon />&ensp;&ensp;Linkedin
                         </a>
+                    </li>
+                    <li>
+                        <Link to='/about'>
+                           <InfoTwoToneIcon /> About
+                        </Link>
                     </li>
                 </ul>
                 <div className='logoFooter'>

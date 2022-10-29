@@ -1,4 +1,5 @@
 import './Home.scss'
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 
 import doctor from '../../assets/images/doctor.png'
 import xray from '../../assets/images/xray.png'
@@ -6,7 +7,7 @@ import xray from '../../assets/images/xray.png'
 export const Home = (props) => {
     return (
         <div className='home'>
-            <h2>Home</h2>
+            <h2><HomeTwoToneIcon /> Home <HomeTwoToneIcon /></h2>
             <h3>Application for registering basic patient data. </h3>
 
             <div className='homeImage'>

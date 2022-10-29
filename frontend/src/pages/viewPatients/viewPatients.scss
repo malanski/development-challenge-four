@@ -1,9 +1,17 @@
 .patients-view-list {
-    width: 95%;
-    padding: 20px;
-    margin: 0 auto 0 auto;
+    width: 100%;
+    padding: 10px;
+    margin: 10px auto 0 auto;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    h2 {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e3f4ff;
+    }
 }
