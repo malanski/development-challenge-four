@@ -1,6 +1,9 @@
 .patients-view-list {
+    width: 95%;
+    padding: 20px;
+    margin: 0 auto 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 20px;
 }
