@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const axios = Axios.create({
-    baseURL: 'https://localhost:3030/patientsmanagementapi'
+    baseURL: 'https://localhost:8080/patientsmanagementapi'
 });
 
 export const PatientApi = {
@@ -9,6 +9,6 @@ export const PatientApi = {
         return axios.get('/consult');
     },
     getPatientById: (id) => {
-        return axios.get(`/patient/${id}`)
+        return axios.get(`/consult/${id}`)
     }
 };

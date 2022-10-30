@@ -26,8 +26,10 @@ export const ViewPatients = () => {
         }, []);
 
     return (
-        <div>
-            <h2><FormatListNumberedIcon /> Patients list view <FormatListNumberedIcon /></h2>
+        <div className="patients-view">
+            <h2>
+                <FormatListNumberedIcon /> Patients list view <FormatListNumberedIcon />
+            </h2>
 
             <div className="patients-view-list">
                 {dataApi.map((data, index) => <PatientCard dataApi={data} index={index} />)}

@@ -28,7 +28,7 @@ export function Nav() {
                 
             </CustomLink>
 
-            <CustomLink title="Register" to="/register">
+            <CustomLink title="Add new Patient" to="/register">
                 <span className='nav-links'>New Patient&ensp;<AddIcon /></span>
 
             </CustomLink>

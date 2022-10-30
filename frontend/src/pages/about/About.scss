@@ -24,6 +24,9 @@
             width: 100%;
         }
     }
+    .logo-image {
+        width: 100%;
+    }
     h2 {
         padding: 20px;
         display: flex;
@@ -31,14 +34,15 @@
         align-items: center;
     }
     p {
-        width: 100%;
+        width: auto;
         text-align: justify;
-        margin: 5px;
+        margin: 0 5px;
+        padding: 0 5px;
     }
     .aboutImage {
         display: flex;
         align-items: center;
-        padding: 5px;
+        padding: 0 5px 0 0;
 
         
         img {
@@ -91,6 +95,24 @@
     .about {
         flex-direction: column;
         padding: 0;
+        margin: 0;
+        .aboutImage {
+            // width: 50%;
+            flex-wrap: wrap;
+
+        }       
+    }
+}
+@media screen and (max-width: 386px) {
+    .about {
+        flex-direction: column;
+        padding: 0;
+        .about-card {
+            width: 100%;
+            margin: 0;
+            border: none;
+            padding: 5px;
+        }
         .aboutImage {
             // width: 50%;
             flex-wrap: wrap;

@@ -11,7 +11,7 @@ export const About = () => {
 
                 <h2><InfoTwoToneIcon /> About <InfoTwoToneIcon /></h2>
 
-                <img src={logo} alt='A doctor with his patient'></img>
+                <img className='logo-image' src={logo} alt='A doctor with his patient'></img>
 
                 <p>
                     &ensp;&ensp;&ensp;We make exams and medical data management more flexible, 

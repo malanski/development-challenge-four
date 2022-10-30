@@ -6,7 +6,7 @@ Front-end application for visual interaction with the user registration and logi
 <hr>
 
 ## **Access Application**
-[http://malanski.github.io/development-challenge-four](http://malanski.github.io/development-challenge-four)
+[https://development-challenge-four-eta.vercel.app/](https://development-challenge-four-eta.vercel.app/)
 
 <hr>
 
