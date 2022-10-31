@@ -1,4 +1,4 @@
-# **Frontend - Registration System/Login** 
+# **Backend - Registration System/Login** 
 
 ## **Description**
 Back-end application for visual interaction with the user registration and login API
@@ -18,8 +18,7 @@ Back-end application for visual interaction with the user registration and login
 This project was developed with the following technologies: 
 - JavaScript 
 - Express
-- MongoDB (Atlas)
-- Mogoose
+- Mogoose - MongoDB (Atlas)
 - JSON
 
 <hr>
