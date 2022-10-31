@@ -16,7 +16,11 @@ export const Patient = () => {
     });
 
     useEffect(() => {
-        const url = `http://localhost:8080/patientsmanagementapi/consult/${id}`;
+        //LOCAL URL 
+        // const url = `http://localhost:8000/patientsmanagementapi/consult/${id}`;
+    
+        // Heroku Backend Deploy
+        const url = `https://my-register-backend.herokuapp.com/patientsmanagementapi/consult/${id}`;
         
             const fetchData = async () => {
                 try {

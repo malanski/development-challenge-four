@@ -1,7 +1,11 @@
 import Axios from 'axios';
 
 const axios = Axios.create({
-    baseURL: 'http://localhost:8080/patientsmanagementapi'
+    //LOCAL URL 
+    // baseURL: 'http://localhost:8000/patientsmanagementapi'
+    
+    // Heroku Backend Deploy
+    baseURL: 'https://my-register-backend.herokuapp.com/patientsmanagementapi'
 });
 
 export const PatientApi = {

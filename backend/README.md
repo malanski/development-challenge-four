@@ -5,8 +5,8 @@ Back-end application for visual interaction with the user registration and login
 
 <hr>
 
-## **Access Application**
-[https://development-challenge-four-bteh.vercel.app/](https://development-challenge-four-bteh.vercel.app/)
+## **Access Application Deploy**
+[https://my-register-backend.herokuapp.com/patientsmanagementapi](https://my-register-backend.herokuapp.com/patientsmanagementapi)
 
 <hr>
 

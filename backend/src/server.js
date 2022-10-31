@@ -10,6 +10,6 @@ app.use(express.json(), cors());
 // app.use('/', userControllers)
 app.use('/patientsmanagementapi', userControllers)
 
-app.listen(8080, () => {
+app.listen(process.env.PORT || 8000 , () => {
     console.log('The server is running')
 });
