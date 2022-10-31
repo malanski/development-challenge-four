@@ -44,8 +44,8 @@ SSH
 `git clone git@github.com:malanski/development-challenge-four.git`
 # 📷 App Demonstrations
 
-<img src="src/assets/images/patient-json.png" title="Postman user screenshot"/>
-<img src="src/assets/images/backend-server.png" title="NodeJs server screenshot"/>
+<img src="../frontend/src/assets/images/patient-json.png" title="Postman user screenshot"/>
+<img src="../frontend/src/assets/images/backend-server.png" title="NodeJs server screenshot"/>
 
 
 
