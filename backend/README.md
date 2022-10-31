@@ -6,7 +6,7 @@ Back-end application for visual interaction with the user registration and login
 <hr>
 
 ## **Access Application**
-[https://development-challenge-four-eta.vercel.app/](https://development-challenge-four-eta.vercel.app/)
+[https://development-challenge-four-bteh.vercel.app/](https://development-challenge-four-bteh.vercel.app/)
 
 <hr>
 
@@ -34,6 +34,9 @@ This project was developed with the following technologies:
 
 ## **endPoints**
 
+-POST: patientsmanagementapi/register
+
+-GET, PATCH and DELETE: patientsmanagementapi/consult 
 ## **Project Clone**
 HTTPS  
 `git clone https://github.com/malanski/development-challenge-four.git`

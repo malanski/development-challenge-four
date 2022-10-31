@@ -40,62 +40,62 @@ const CardStyles = styled("div")(({ theme }) => ({
 export default function PatientCard(props) {
   const { _id, name, birthDate, email, address } = props.dataApi
 
-  console.log(props)
   const navigate = useNavigate();
 
   // const name = props.name;
   // const id = props.url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '');
+  // const id = props.url.replace('http://localhost:8080/patientsmanagementapi/consult', '').replace('/', '');
 
   return (
-    <CardStyles  onClick={() => navigate(`/patient/${_id}`)}>
-      <Card sx={{}}>
+    <CardStyles>
+      <Card sx={{}} onClick={() => navigate(`/patient/${_id}`)}>
         <CardContent>
           <Typography sx={{ fontSize: 14, textAlign: 'right' }} gutterBottom>
             <small>Patient Id:</small> <br /> <b>{_id}</b>
           </Typography>
 
           <Typography sx={{ mb: 1.5 }} >
-            <small>Name:</small> <br /> {name}
+            <small>Name: </small> <br /> {name}
           </Typography>
           <hr style={{ color: '#2B93DD' }} />
           <Typography sx={{ mb: 1.5 }} >
-            <small>Birth Date:</small> {birthDate}
+            <small>Birth Date: </small> {birthDate}
           </Typography>
           <Typography sx={{ mb: 1.5 }} >
-            <small>Email:</small> {email}
+            <small>Email: </small> {email}
           </Typography>
 
           <details style={{ cursor: 'pointer', background: '#f4fbff', padding: '5px' }}>
             <summary className='detalhesName'>Address</summary>
             <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Zip Code</small>
+              <small>Zip Code:</small>
               <br />
               {address.zipCode}
             </Typography>
             
             <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Country</small>
+              <small>Country: </small>
               <br />
               {address.country}
             </Typography>
             
             <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>County</small>
+              <small>County: </small>
               <br />
               {address.county}
             </Typography>
             <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>City</small>
+              <small>City: </small>
               <br />
               {address.city}
             </Typography>
             <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Street address</small>
+              <small>Street address: </small>
               <br />
               {address.streetAddress}
             </Typography>
             <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Apt, suite, etc </small>
+              <small>Apt, suite, etc: </small>
               <br />
               {address.addition}
             </Typography>

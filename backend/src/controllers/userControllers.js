@@ -57,6 +57,7 @@ router.get('/consult', async (req, res) => {
         });
     }
 });
+
 router.get('/consult/:id', async(req, res) => {
     try {
         const { id } = req.body;
