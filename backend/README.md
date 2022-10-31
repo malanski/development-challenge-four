@@ -45,6 +45,8 @@ SSH
 # 📷 App Demonstrations
 
 <img src="../frontend/src/assets/images/patient-json.png" title="Postman user screenshot"/>
+  
+Use Nodemon for Development:  
 <img src="../frontend/src/assets/images/backend-server.png" title="NodeJs server screenshot"/>
 
 
