@@ -1,7 +1,7 @@
 # **Frontend - Registration System/Login** 
 
 ## **Description**
-Front-end application for visual interaction with the user registration and login API
+Front-end application for visual interaction with the patients registration Api
 
 <hr>
 

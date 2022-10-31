@@ -1,7 +1,7 @@
 # **Backend - Registration System/Login** 
 
 ## **Description**
-Back-end application for visual interaction with the user registration and login API
+Back-end patients registration management application
 
 <hr>
 
