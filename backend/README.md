@@ -1,7 +1,7 @@
 # **Frontend - Registration System/Login** 
 
 ## **Description**
-Front-end application for visual interaction with the user registration and login API
+Back-end application for visual interaction with the user registration and login API
 
 <hr>
 
@@ -11,30 +11,28 @@ Front-end application for visual interaction with the user registration and logi
 <hr>
 
 ## **Objectives**
-- Create application with ReactJs using Yup, Material-UI and useForm
-- Error handling and validations  
+- CRUD: Application that can be used to register a user, create, read, update and delete data. 
 
 ## **Technologies**
 
 This project was developed with the following technologies: 
 - JavaScript 
-- ReactJs 
-- React Hooks 
-- React Router 
-- React useForm 
-- Material-UI 
-- Yup 
-- Axios 
+- Express
+- MongoDB (Atlas)
+- Mogoose
+- JSON
 
 <hr>
 
 ## **Requirements**
 - Node.js;
 - npm or yarn;
-- Backend: [https://github.com/malanski/development-challenge-four/tree/main/backend/](https://github.com/malanski/development-challenge-four/tree/main/backend)
+- Frontend: [https://github.com/malanski/development-challenge-four/tree/main/frontend/](https://github.com/malanski/development-challenge-four/tree/main/frontend)
 
 ## **Installations**
 `npm install`
+
+## **endPoints**
 
 ## **Project Clone**
 HTTPS  
@@ -44,7 +42,8 @@ SSH
 `git clone git@github.com:malanski/development-challenge-four.git`
 # 📷 App Demonstrations
 
-<img src="src/assets/images/page-home.png" title="App screenshot"/>
+<img src="src/assets/images/patient-json.png" title="Postman user screenshot"/>
+<img src="src/assets/images/backend-server.png" title="NodeJs server screenshot"/>
 
 
 

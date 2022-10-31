@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ConfirmDeletePatient from '../ConfirmDeletePatient/ConfirmDeletePatient';
 import ConfirmEditPatient from '../ConfirmEditPatient/ConfirmEditPatient';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const CardStyles = styled("div")(({ theme }) => ({
   width: '275px',
@@ -40,9 +41,13 @@ export default function PatientCard(props) {
   const { _id, name, birthDate, email, address } = props.dataApi
 
   console.log(props)
+  const navigate = useNavigate();
+
+  // const name = props.name;
+  // const id = props.url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '');
 
   return (
-    <CardStyles>
+    <CardStyles  onClick={() => navigate(`/patient/${_id}`)}>
       <Card sx={{}}>
         <CardContent>
           <Typography sx={{ fontSize: 14, textAlign: 'right' }} gutterBottom>

@@ -57,7 +57,32 @@ router.get('/consult', async (req, res) => {
         });
     }
 });
+router.get('/consult/:id', async(req, res) => {
+    try {
+        const { id } = req.body;
 
+        const patients = await UserModel.findOne({ id });
+
+        if (!patients) {
+            return res.status(400).json({
+                error: true,
+                message: 'The patient is not register!'
+            }); 
+        }
+        
+        return res.status(200).json({
+            patients,
+            error: false,
+            message: 'The patient has been found!'
+        }); 
+
+    } catch (error) {
+        throw res.status(400).json({
+            error: true,
+            message: error.message
+        });
+    }   
+});
 
 router.patch('/consult', async (req, res) => {
     try {

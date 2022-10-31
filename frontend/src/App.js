@@ -16,6 +16,7 @@ import { About } from './pages/about'
 import { Register } from './pages/register'
 import { ViewPatients } from './pages/viewPatients'
 import { EditPatient } from './pages/editPatient';
+import { Patient } from './pages/patient';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/viewPatients' element={<ViewPatients />} />
               <Route path='/editPatient' element={<EditPatient />} />
+              <Route path='/patient/:id' element={<Patient />} />
             </Routes>
           </main>
 

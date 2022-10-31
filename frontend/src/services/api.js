@@ -1,11 +1,11 @@
 import Axios from 'axios';
 
 const axios = Axios.create({
-    baseURL: 'https://localhost:8080/patientsmanagementapi'
+    baseURL: 'https://localhost:8080/patientsmanagementapi/consult'
 });
 
 export const PatientApi = {
-    listPatients: (offset = 0, limit = 20) => {
+    listPatients: () => {
         return axios.get('/consult');
     },
     getPatientById: (id) => {
