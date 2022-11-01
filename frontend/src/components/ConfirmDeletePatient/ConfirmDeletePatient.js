@@ -17,47 +17,56 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-  
-export default function ConfirmDeletePatient() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    return (
-        <div>
-            <Button onClick={handleOpen}  title="Delete"><DeleteForeverTwoToneIcon /></Button>
-            
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Waring
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Are you sure you want to <big>Delete</big> this patient's record?
-            
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Button sx={{ width: '176px', height: '40px', margin: '10px 10px 0 0'}} variant="contained"
-                      onClick={handleClose}
-                      color="success">
-                      <DeleteForeverTwoToneIcon />
-                      Confirm Delete
-                    </Button>
 
-                    <Button sx={{ width: '176px', height: '40px', margin: '10px 0 0 0' }} variant="outlined"
-                      color="error"
-                      onClick={handleClose}>
-                      <CloseIcon />
-                      Cancel
-                    </Button>
-                  </div>
-                  
-                </Typography>
-              </Box>
-            </Modal>
-        </div>
-    )
+export default function ConfirmDeletePatient(props) {
+  const { _id, name } = props
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  return (
+    <div>
+      <Button onClick={handleOpen}
+        color="error"
+        title="Delete">
+        <DeleteForeverTwoToneIcon />
+      </Button>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Waring
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Are you sure you want to <big>Delete  </big> this patient's record?
+            <p>Id: {_id}</p>
+            <p>Name: {name}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Button sx={{ width: '176px', height: '40px', margin: '10px 10px 0 0' }} variant="contained"
+                onClick={handleClose}
+                color="success"
+                title="Delete patient record">
+                <DeleteForeverTwoToneIcon />
+                Confirm Delete
+              </Button>
+
+              <Button sx={{ width: '176px', height: '40px', margin: '10px 0 0 0' }} variant="outlined"
+                color="error"
+                onClick={handleClose}
+                title="Cancel delete">
+                <CloseIcon />
+                Cancel
+              </Button>
+            </div>
+
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
+  )
 } 

@@ -1,26 +1,41 @@
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+// Components
 import ConfirmDeletePatient from '../ConfirmDeletePatient/ConfirmDeletePatient';
 import ConfirmEditPatient from '../ConfirmEditPatient/ConfirmEditPatient';
+// Icons
+import PersonIcon from '@mui/icons-material/Person';
+
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
+// Materials UI 
+import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+
 const CardStyles = styled("div")(({ theme }) => ({
-  width: '275px',
-  background: '#e3f4ff',
   textAlign: 'left',
+  border: '1px solid #e3f4ff',
+  borderRadius: '5px',
+  width: '300px',
+  padding:'10px',
+
+    div:{
+      background: '#e3f4ff',
+      width: 'auto',
+      // minHeight: '250px',
+      // maxHeight: 'auto',
+      
+      div: {
+        // padding: '5%',
+
+      }
+
+    },
 
   [theme.breakpoints.down("tablet")]: {
-    margin: '0',
     width: '90%',
 
     div: {
-      width: '100%',
 
-      border: 'none',
-      padding: '2.5px',
+      // padding: '2.5px',
       div: {
 
         p: {
@@ -38,25 +53,29 @@ const CardStyles = styled("div")(({ theme }) => ({
 }));
 
 export default function PatientCard(props) {
+  
   const { _id, name, birthDate, email, address } = props.dataApi
 
   const navigate = useNavigate();
 
-  // const name = props.name;
-  // const id = props.url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '');
-  // const id = props.url.replace('http://localhost:8080/patientsmanagementapi/consult', '').replace('/', '');
-
-  return (
+    return (
     <CardStyles>
-      <Card sx={{}} onClick={() => navigate(`/patient/${_id}`)}>
+      <Card sx={{}} >
         <CardContent>
           <Typography sx={{ fontSize: 14, textAlign: 'right' }} gutterBottom>
             <small>Patient Id:</small> <br /> <b>{_id}</b>
           </Typography>
 
-          <Typography sx={{ mb: 1.5 }} >
+          <Typography 
+            sx={{ 
+              mb: 1.5,
+              padding: '5px',
+              background: 'white',
+              textTransform:'capitalize', 
+              fontWeight: 'bolder'}} >
             <small>Name: </small> <br /> {name}
           </Typography>
+
           <hr style={{ color: '#2B93DD' }} />
           <Typography sx={{ mb: 1.5 }} >
             <small>Birth Date: </small> {birthDate}
@@ -66,6 +85,7 @@ export default function PatientCard(props) {
           </Typography>
 
           <details style={{ cursor: 'pointer', background: '#f4fbff', padding: '5px' }}>
+            <hr style={{ color: '#2B93DD' }} />
             <summary className='detalhesName'>Address</summary>
             <Typography sx={{ mb: 1.5 }} variant="body2">
               <small>Zip Code:</small>
@@ -104,9 +124,13 @@ export default function PatientCard(props) {
         </CardContent>
         <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-          <ConfirmEditPatient />
+          <ConfirmEditPatient title={name + " Edit"} />
 
           <ConfirmDeletePatient />
+
+          <Button onClick={() => navigate(`/patient/${_id}`)} title={name + " Data"}>
+            <PersonIcon />
+          </Button>
 
         </CardActions>
       </Card>

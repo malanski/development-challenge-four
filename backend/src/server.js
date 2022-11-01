@@ -8,8 +8,8 @@ const app = express();
 app.use(express.json(), cors());
 
 // app.use('/', userControllers)
-app.use('/patientsmanagementapi', userControllers)
+app.use('/', userControllers)
 
-app.listen(process.env.PORT || 8000 , () => {
+app.listen(process.env.PORT || 8000,  () => {
     console.log('The server is running')
 });

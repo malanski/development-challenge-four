@@ -1,17 +1,38 @@
 .patient {
-
+    border: 1px solid #3497DE;
+    border-radius: 20px;
+    margin: 10px auto;
+    min-width: 300px;
+    mAX-width: 375px;
+    
+    .patient-id {
+        text-align: right;
+    }
     
     h2 {
         padding: 20px;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
 
     .patient-data {
         text-align: left;
-        width: 300px;
         padding: 20px;
+        ul {
+            li{
+                margin: 10px;
+            }
+        }
+        a {
+            display: flex;
+            align-items: center;
+        }
+        .patient-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
     }
 
     

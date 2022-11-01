@@ -22,7 +22,7 @@ export const ViewPatients = () => {
     return (
         <div className="patients-view">
             <h2>
-                <FormatListNumberedIcon /> Patients list view <FormatListNumberedIcon />
+                <FormatListNumberedIcon />&ensp;Patients list view&ensp;<FormatListNumberedIcon />
             </h2>
 
             <div className="patients-view-list">

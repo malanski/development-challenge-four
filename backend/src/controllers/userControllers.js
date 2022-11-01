@@ -5,7 +5,7 @@ const UserModel = require('../models/User');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
+router.post('/patients', async (req, res) => {
     try {
         const { email } = req.body;
 
@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.get('/consult', async (req, res) => {
+router.get('/patients', async (req, res) => {
     try {
         // const { name } = req.body;
 
@@ -58,13 +58,13 @@ router.get('/consult', async (req, res) => {
     }
 });
 
-router.get('/consult/:id', async(req, res) => {
+router.get('/patients/:id', async(req, res) => {
     try {
-        const { id } = req.body;
+        const  _id  = req.params.id;
 
-        const patients = await UserModel.findOne({ id });
+        const patient = await UserModel.findOne({ _id });
 
-        if (!patients) {
+        if (!patient) {
             return res.status(400).json({
                 error: true,
                 message: 'The patient is not register!'
@@ -72,7 +72,7 @@ router.get('/consult/:id', async(req, res) => {
         }
         
         return res.status(200).json({
-            patients,
+            patient,
             error: false,
             message: 'The patient has been found!'
         }); 
@@ -85,13 +85,13 @@ router.get('/consult/:id', async(req, res) => {
     }   
 });
 
-router.patch('/consult', async (req, res) => {
+router.patch('/patients', async (req, res) => {
     try {
-        const { name } = req.body;
+        const  _id  = req.params.id;
 
-        let patients = await UserModel.findOne({ name });
+        let patient = await UserModel.findOne({ _id });
 
-        if (!patients) {
+        if (!patient) {
             return res.status(400).json({
                 error: true,
                 message: "This patient is not register!"
@@ -100,10 +100,10 @@ router.patch('/consult', async (req, res) => {
 
         await UserModel.updateOne(req.body);
 
-        patients = await UserModel.findOne({ name });
+        patient = await UserModel.findOne({ _id });
 
         return res.status(200).json({
-            patients,
+            patient,
             error: false,
             message: "The patient has been updated successfully"
         })
@@ -116,23 +116,23 @@ router.patch('/consult', async (req, res) => {
     }
 })
 
-router.delete('/consult', async(req, res) => {
+router.delete('/patients/:id', async(req, res) => {
     try {
-        const { name } = req.body;
+        const _id  = req.params.id;
 
-        const patients = await UserModel.findOne({ name });
+        const patient = await UserModel.findOne({ _id });
 
-        if(!patients) {
+        if(!patient) {
             return res.status(400).json({
                 error: true,
                 message: "Patient not found"
             })
         }
 
-        await UserModel.deleteOne(req.body);
+        await UserModel.deleteOne({_id});
 
         return res.status(200).json({
-            patients,
+            patient,
             error: false,
             message: "Patient deleted successfully!"
         })

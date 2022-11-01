@@ -6,7 +6,7 @@ Back-end patients registration management application
 <hr>
 
 ## **Access Application Deploy**
-[https://my-register-backend.herokuapp.com/patientsmanagementapi](https://my-register-backend.herokuapp.com/patientsmanagementapi)
+[https://my-register-backend.herokuapp.com](https://my-register-backend.herokuapp.com)
 
 <hr>
 
@@ -33,9 +33,9 @@ This project was developed with the following technologies:
 
 ## **endPoints**
 
--POST: patientsmanagementapi/register
+-POST: /patients
 
--GET, PATCH and DELETE: patientsmanagementapi/consult 
+-GET, PATCH and DELETE: /patients/:id
 ## **Project Clone**
 HTTPS  
 `git clone https://github.com/malanski/development-challenge-four.git`
