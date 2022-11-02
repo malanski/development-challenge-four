@@ -47,7 +47,7 @@ Create patient Form
 <img src="src/assets/images/page-home.png" title="App screenshot"/>
   
 Fetch data from Patient Api  
-<img src="../frontend/src/assets/images/page-list-view.png" title="Fetch data from Patient Api"/>
+<img src="..src/assets/images/page-list-view.png" title="Fetch data from Patient Api"/>
 
 
 
