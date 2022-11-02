@@ -1,11 +1,11 @@
 # **Backend - Registration System/Login** 
 
 ## **Description**
-Back-end patients registration management application
+Back-end application to register patients
 
 <hr>
 
-## **Access Application Deploy**
+## **API Access Deploy**
 [https://my-register-backend.herokuapp.com](https://my-register-backend.herokuapp.com)
 
 <hr>
@@ -36,6 +36,7 @@ This project was developed with the following technologies:
 -POST: /patients
 
 -GET, PATCH and DELETE: /patients/:id
+  
 ## **Project Clone**
 HTTPS  
 `git clone https://github.com/malanski/development-challenge-four.git`
@@ -48,9 +49,7 @@ SSH
   
 Use Nodemon for Development:  
 <img src="../frontend/src/assets/images/backend-server.png" title="NodeJs server screenshot"/>
-
-
-
+  
 ## **About the author and acknowledgment**
 I Ulisses Malanski as project developer am grateful for being able to participate in this challenge, because it was a great opportunity to develop my hard skills, improving my knowledge in building web applications.
 
