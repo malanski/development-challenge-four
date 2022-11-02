@@ -46,8 +46,11 @@ SSH
 Create patient Form
 <img src="src/assets/images/page-home.png" title="App screenshot"/>
   
-Fetch data from Patient Api  
-<img src="src/assets/images/page-list-view.png" title="Fetch data from Patient Api"/>
+Fetch all patients data from Patient Api  
+<img src="src/assets/images/page-list-view.png" title="Fetch all patients data from Patient Api"/>
+  
+Fetch data from Patient Api   
+<img src="src/assets/images/page-patient.png" title="Fetch single patient data from Patient Api"/>
 
 
 
