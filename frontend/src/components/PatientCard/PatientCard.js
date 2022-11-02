@@ -1,8 +1,9 @@
 // Components
 import ConfirmDeletePatient from '../ConfirmDeletePatient/ConfirmDeletePatient';
-import ConfirmEditPatient from '../ConfirmEditPatient/ConfirmEditPatient';
+// import ConfirmEditPatient from '../ConfirmEditPatient/ConfirmEditPatient';
 // Icons
 import PersonIcon from '@mui/icons-material/Person';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
@@ -15,20 +16,20 @@ const CardStyles = styled("div")(({ theme }) => ({
   border: '1px solid #e3f4ff',
   borderRadius: '5px',
   width: '300px',
-  padding:'10px',
+  padding: '10px',
 
-    div:{
-      background: '#e3f4ff',
-      width: 'auto',
-      // minHeight: '250px',
-      // maxHeight: 'auto',
-      
-      div: {
-        // padding: '5%',
+  div: {
+    background: '#e3f4ff',
+    width: 'auto',
+    // minHeight: '250px',
+    // maxHeight: 'auto',
 
-      }
+    div: {
+      // padding: '5%',
 
-    },
+    }
+
+  },
 
   [theme.breakpoints.down("tablet")]: {
     width: '90%',
@@ -53,12 +54,12 @@ const CardStyles = styled("div")(({ theme }) => ({
 }));
 
 export default function PatientCard(props) {
-  
+
   const { _id, name, birthDate, email, address } = props.dataApi
 
   const navigate = useNavigate();
 
-    return (
+  return (
     <CardStyles>
       <Card sx={{}} >
         <CardContent>
@@ -66,13 +67,14 @@ export default function PatientCard(props) {
             <small>Patient Id:</small> <br /> <b>{_id}</b>
           </Typography>
 
-          <Typography 
-            sx={{ 
+          <Typography
+            sx={{
               mb: 1.5,
               padding: '5px',
               background: 'white',
-              textTransform:'capitalize', 
-              fontWeight: 'bolder'}} >
+              textTransform: 'capitalize',
+              fontWeight: 'bolder'
+            }} >
             <small>Name: </small> <br /> {name}
           </Typography>
 
@@ -92,13 +94,13 @@ export default function PatientCard(props) {
               <br />
               {address.zipCode}
             </Typography>
-            
+
             <Typography sx={{ mb: 1.5 }} variant="body2">
               <small>Country: </small>
               <br />
               {address.country}
             </Typography>
-            
+
             <Typography sx={{ mb: 1.5 }} variant="body2">
               <small>County: </small>
               <br />
@@ -124,7 +126,9 @@ export default function PatientCard(props) {
         </CardContent>
         <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-          <ConfirmEditPatient title={name + " Edit"} />
+          <Button onClick={() => navigate(`/editPatient/${_id}`)} title={name + " Data"}>
+            <EditIcon />Edit
+          </Button>
 
           <ConfirmDeletePatient />
 

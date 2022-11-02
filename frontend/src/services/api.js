@@ -18,10 +18,10 @@ export const PatientApi = {
     registerPatient: (dataRegister) => {
         return axios.post('/patients', dataRegister)
     },
-    // updatePatient: (id) => {
-    //     return axios.patch(`/patients/${id}`)
-    // },
-    // deletePatient: (id) => {
-    //     return axios.delete(`/patients/${id}`)
-    // }
+    updatePatient: (id) => {
+        return axios.patch(`/patients/${id}`)
+    },
+    deletePatient: (id) => {
+        return axios.delete(`/patients/${id}`)
+    }
 };

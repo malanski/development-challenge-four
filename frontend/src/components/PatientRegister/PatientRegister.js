@@ -221,7 +221,7 @@ export function PatientRegister() {
                             htmlFor='streetAddress'
                             name='streetAddress'
                             label="Street address"
-                            placeholder='Rua Dos Bobos, n° 0, Bairro'
+                            placeholder='Rua Dos ABCs, n° 00, Bairro'
                             {...register('streetAddress')}
                         />
                         <p> {errors.streetAddress?.message} </p>

@@ -90,16 +90,13 @@ router.patch('/patients', async (req, res) => {
         const  _id  = req.params.id;
 
         let patient = await UserModel.findOne({ _id });
-
         if (!patient) {
             return res.status(400).json({
                 error: true,
                 message: "This patient is not register!"
             });
         }
-
         await UserModel.updateOne(req.body);
-
         patient = await UserModel.findOne({ _id });
 
         return res.status(200).json({
@@ -128,7 +125,6 @@ router.delete('/patients/:id', async(req, res) => {
                 message: "Patient not found"
             })
         }
-
         await UserModel.deleteOne({_id});
 
         return res.status(200).json({

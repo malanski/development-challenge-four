@@ -5,12 +5,16 @@ import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+
 import { PatientApi } from '../../services/api';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 
 export const Patient = () => {
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const [state, setState] = useState({
         address: '',
@@ -38,6 +42,12 @@ export const Patient = () => {
 
     function deletePatient(_id){
         console.log("This is the deleted id " + state._id)
+        PatientApi.deletePatient(id)
+        .then((response) => {
+        console.log(response)
+
+        })
+
     }
 
     return (
@@ -74,8 +84,8 @@ export const Patient = () => {
                         <DeleteForeverTwoToneIcon />Delete
                     </Button>
 
-                    <Button>
-                        <EditIcon/>Edit
+                    <Button onClick={() => navigate(`/editPatient/${id}`)} title={state.name + " Data"}>
+                        <EditIcon />Edit
                     </Button>
 
                     
