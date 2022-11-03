@@ -1,9 +1,15 @@
 import './Footer.scss'
+
+// Assetes Images
 import medcloudLogo2 from '../../assets/images/medcloud2.png'
+
+// Icon
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
+
+// React Router-Dom
 import { Link } from 'react-router-dom';
 
 export function Footer() {

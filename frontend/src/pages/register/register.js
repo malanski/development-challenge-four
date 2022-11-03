@@ -1,3 +1,4 @@
+// Components
 import { PatientRegister } from "../../components/PatientRegister/PatientRegister"
 
 export const Register = (props) => {

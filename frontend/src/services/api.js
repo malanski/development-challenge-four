@@ -2,10 +2,10 @@ import Axios from 'axios';
 
 const axios = Axios.create({
     //LOCAL URL 
-    // baseURL: 'http://localhost:8000'
+    baseURL: 'http://localhost:8000'
     
     // Heroku Backend Deploy
-    baseURL: 'https://my-register-backend.herokuapp.com'
+    // baseURL: 'https://my-register-backend.herokuapp.com'
 });
 
 export const PatientApi = {
@@ -18,8 +18,8 @@ export const PatientApi = {
     registerPatient: (dataRegister) => {
         return axios.post('/patients', dataRegister)
     },
-    updatePatient: (id) => {
-        return axios.patch(`/patients/${id}`)
+    updatePatient: (id, dataUpdate) => {
+        return axios.patch(`/patients/${id}`, dataUpdate)
     },
     deletePatient: (id) => {
         return axios.delete(`/patients/${id}`)

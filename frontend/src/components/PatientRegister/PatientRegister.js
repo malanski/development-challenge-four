@@ -1,23 +1,32 @@
 import './PatientRegister.scss';
-import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, TextField } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { useForm } from 'react-hook-form';
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+// API
 import { PatientApi } from '../../services/api';
 
+// Icons
+import AddIcon from '@mui/icons-material/Add';
+
+// Material UI
+import { Box, Button, TextField, styled } from '@mui/material';
+
+// React Hook-Form and Router-Dom
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+// Yup
+// import { validationSchema } from '../validationSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+// Yup
 const today = new Date();
+
 // Form validation schema
 const schema = yup.object().shape({
     patientName: yup.string().min(2, "Patient name should have 2 characters or more")
-        .max(60, "Patient name should be at maximum 60 characters long").required("Patient name should be required"),
-
-    // birthDate: yup.date().transform(parseDateString).max(today).required("Patient birth date should be required"),
-    birthDate: yup.date().max(today).required("Patient birth date should be required"),
-
-    patientEmail: yup.string().email("Patient email must be a valid email!").required("Patient email should be required!"),
+        .max(70, "Patient name should be at maximum 70 characters long").required("Patient name should be required"),
+    birthDate: yup.date().max(today, "Patient birth date must be earlier than today").required("Patient birth date should be required"),
+    patientEmail: yup.string().email("Please inset a valid email!").required("Patient email should be required!"),
 
     // Address Validation
     country: yup.string().required("Patient Country should be required!"),
@@ -41,7 +50,7 @@ const FormStyles = styled("section")(({ theme }) => ({
         },
         p: {
             color: 'red',
-            fontSize: '20px',
+            fontSize: '18px',
         },
 
         div: {
@@ -50,8 +59,8 @@ const FormStyles = styled("section")(({ theme }) => ({
             div: {
                 label: {
                     textAlign: 'center',
-                    // width: 'auto',
-                    width: '99%',
+                    width: '100%',
+                    marginLeft: '-2px',
                     borderRadius: '10px 10px 0 0',
                     background: '#F4F7FC',
                 },
@@ -73,13 +82,6 @@ const FormStyles = styled("section")(({ theme }) => ({
 
             border: 'none',
             padding: '2.5%',
-            div: {
-                div: {
-                    label: {
-
-                    }
-                }
-            }
         },
     },
 }));
@@ -87,6 +89,7 @@ const FormStyles = styled("section")(({ theme }) => ({
 
 export function PatientRegister() {
     const { register, formState: { errors }, handleSubmit, getValues } = useForm({ resolver: yupResolver(schema) });
+    const navigate = useNavigate();
 
     const submitForm = (data) => {
         const dataBirthDate = getValues('birthDate');
@@ -100,28 +103,28 @@ export function PatientRegister() {
             address: {
                 zipCode: data.zipCode,
                 country: data.country,
-                state: data.state,
+                county: data.county,
                 city: data.city,
                 streetAddress: data.streetAddress,
                 addition: data.addition,
             },
         };
-
         PatientApi.registerPatient(dataRegister);
+        navigate('/viewPatients')
     }
+
     return (
         <div className='register'>
 
-            <h2><AddIcon /> Add new Patient <AddIcon /></h2>
-
+            <h2><AddIcon />&ensp;Add new Patient&ensp;<AddIcon /></h2>
+            <p>Complete the form correctly and click the submit button to create a new patient data register.</p>
             <FormStyles >
                 <Box
                     component="form"
+                    onSubmit={handleSubmit(submitForm)}
                     sx={{
                         margin: '31px auto 30px auto',
-                    }}
-                    onSubmit={handleSubmit(submitForm)}
-                >
+                    }}>
                     <div>
                         <TextField
                             variant="outlined"
@@ -129,8 +132,7 @@ export function PatientRegister() {
                             htmlFor='patientName'
                             name='patientName'
                             label="Patient's name"
-                            {...register('patientName')}
-                        />
+                            {...register('patientName')} />
                         <p> {errors.patientName?.message} </p>
                     </div>
 
@@ -142,8 +144,7 @@ export function PatientRegister() {
                             name='birthDate'
                             type='date'
                             label="Patient's birth date"
-                            {...register('birthDate')}
-                        />
+                            {...register('birthDate')} />
                         <p> {errors.birthDate?.message} </p>
                     </div>
 
@@ -154,13 +155,21 @@ export function PatientRegister() {
                             htmlFor='patientEmail'
                             name='patientEmail'
                             label="Patient email"
-                            {...register('patientEmail')}
-                        />
+                            {...register('patientEmail')} />
                         <p> {errors.patientEmail?.message} </p>
-
                     </div>
 
                     <h3>Patient Address</h3>
+                    <div>
+                        <TextField
+                            variant="outlined"
+                            required
+                            htmlFor='zipCode'
+                            name='zipCode'
+                            label="Zip/ postcode"
+                            {...register('zipCode')} />
+                        <p> {errors.zipCode?.message} </p>
+                    </div>
 
                     <div>
                         <TextField
@@ -169,23 +178,8 @@ export function PatientRegister() {
                             htmlFor='country'
                             name='country'
                             label="Country"
-                            {...register('country')}
-                        />
+                            {...register('country')} />
                         <p> {errors.country?.message} </p>
-
-                    </div>
-
-                    <div>
-                        <TextField
-                            variant="outlined"
-                            required
-                            htmlFor='zipCode'
-                            name='zipCode'
-                            label="Zip/ postcode"
-                            {...register('zipCode')}
-                        />
-                        <p> {errors.zipCode?.message} </p>
-
                     </div>
 
                     <div>
@@ -195,10 +189,8 @@ export function PatientRegister() {
                             htmlFor='county'
                             name='county'
                             label=" County (State)"
-                            {...register('county')}
-                        />
+                            {...register('county')} />
                         <p> {errors.county?.message} </p>
-
                     </div>
 
                     <div>
@@ -208,10 +200,8 @@ export function PatientRegister() {
                             htmlFor='city'
                             name='city'
                             label="City"
-                            {...register('city')}
-                        />
+                            {...register('city')} />
                         <p> {errors.city?.message} </p>
-
                     </div>
 
                     <div>
@@ -222,10 +212,8 @@ export function PatientRegister() {
                             name='streetAddress'
                             label="Street address"
                             placeholder='Rua Dos ABCs, n° 00, Bairro'
-                            {...register('streetAddress')}
-                        />
+                            {...register('streetAddress')} />
                         <p> {errors.streetAddress?.message} </p>
-
                     </div>
 
                     <div>
@@ -234,27 +222,33 @@ export function PatientRegister() {
                             htmlFor='addition'
                             name='addition'
                             label="Apt, suite, etc (optional)"
-                            {...register('addition')}
-                        />
+                            {...register('addition')} />
                         <p> {errors.addition?.message} </p>
-
                     </div>
 
                     <Button
+                        variant="contained"
+                        type='submit'
+                        title="Create new Patient"
                         sx={{
                             width: '183px',
                             fontSize: '23px',
                             fontWeight: '700',
                             background: '#2B93DD'
-                        }}
-                        variant="contained"
-                        type='submit'>
-                        Submit
-                        
+                        }}>
+
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}>
+                            <AddIcon />
+                            Submit
+                            <AddIcon />
+                        </div>
                     </Button>
                 </Box>
             </FormStyles>
-
         </div>
     );
 };

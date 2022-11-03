@@ -1,6 +1,9 @@
 import './Home.scss'
+
+// Material UI Icons
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 
+// Assets Images
 import doctor from '../../assets/images/doctor.png'
 import xray from '../../assets/images/xray.png'
 

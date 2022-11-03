@@ -1,11 +1,12 @@
 .about {
     width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    // display: flex;
+    // justify-content: center;
+    // align-items: flex-start;
     .about-card {
-        width: 385px;
-        margin: 0 auto 0 auto;
+        min-width: 385px;
+        max-width: 800px;
+        margin: 20px auto 0 auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -22,6 +23,11 @@
         }
         .about-card-section {
             width: 100%;
+            img {
+                width: 70%;
+                margin: 20px auto 0 auto;
+
+            }
         }
     }
     .logo-image {
@@ -34,10 +40,10 @@
         align-items: center;
     }
     p {
-        width: auto;
+        width: 90%;
         text-align: justify;
-        margin: 0 5px;
-        padding: 0 5px;
+        margin: 0 5px 0 0;
+        padding: 0 5px 0 0;
     }
     .aboutImage {
         display: flex;
@@ -82,7 +88,6 @@
 @media screen and (max-width: 786px) {
     .about {
         flex-direction: column;
-        padding: 20px;
         gap: 30px;
         .aboutImage {
             // width: 50%;
@@ -96,6 +101,16 @@
         flex-direction: column;
         padding: 0;
         margin: 0;
+        .about-card{
+            .about-card-section {
+                p{
+                    width: 90%;
+                }
+                img {
+                    width: 90%;
+                }
+            }
+        }
         .aboutImage {
             // width: 50%;
             flex-wrap: wrap;
@@ -107,12 +122,21 @@
     .about {
         flex-direction: column;
         padding: 0;
+        width: 100vw;
+
         .about-card {
-            width: 100%;
+            min-width: 60%;
             margin: 0;
             border: none;
-            padding: 5px;
+            padding: 0;
+            p{
+                font-size: 15px;
+                width: 94%;
+                margin: 0 5px 0 5px;
+                padding: 0;
+            }
         }
+        
         .aboutImage {
             // width: 50%;
             flex-wrap: wrap;

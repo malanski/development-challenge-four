@@ -1,8 +1,16 @@
 import './viewPatients.scss';
-import PatientCard from "../../components/PatientCard/PatientCard";
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import { useState, useEffect } from 'react';
+
+// API
 import { PatientApi } from '../../services/api';
+
+// Components
+import PatientCard from "../../components/PatientCard/PatientCard";
+
+// Material UI
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+
+// React and Router-Dom
+import { useState, useEffect } from 'react';
 
 export const ViewPatients = () => {
     let [dataApi, setDataApi] = useState([]);

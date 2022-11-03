@@ -1,6 +1,5 @@
-const { Router } = require('express');
-
 const express = require('express');
+const { Router } = require('express');
 const UserModel = require('../models/User');
 
 const router = express.Router();
@@ -85,18 +84,20 @@ router.get('/patients/:id', async(req, res) => {
     }   
 });
 
-router.patch('/patients', async (req, res) => {
+router.patch('/patients/:id', async (req, res) => {
     try {
         const  _id  = req.params.id;
 
         let patient = await UserModel.findOne({ _id });
+
         if (!patient) {
             return res.status(400).json({
                 error: true,
                 message: "This patient is not register!"
             });
         }
-        await UserModel.updateOne(req.body);
+        await UserModel.findOneAndUpdate({ _id }, req.body);
+
         patient = await UserModel.findOne({ _id });
 
         return res.status(200).json({

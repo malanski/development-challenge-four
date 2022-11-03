@@ -1,15 +1,18 @@
-// Components
-import ConfirmDeletePatient from '../ConfirmDeletePatient/ConfirmDeletePatient';
-// import ConfirmEditPatient from '../ConfirmEditPatient/ConfirmEditPatient';
 // Icons
 import PersonIcon from '@mui/icons-material/Person';
 import EditIcon from '@mui/icons-material/Edit';
 
-import { styled } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
-
 // Materials UI 
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import { 
+  Button, 
+  Card, 
+  CardActions, 
+  CardContent, 
+  Typography, 
+  styled } from '@mui/material';
+
+// React Hook-Form and Router-Dom
+import { useNavigate } from 'react-router-dom';
 
 const CardStyles = styled("div")(({ theme }) => ({
   textAlign: 'left',
@@ -26,6 +29,9 @@ const CardStyles = styled("div")(({ theme }) => ({
 
     div: {
       // padding: '5%',
+      p: {
+
+      },
 
     }
 
@@ -55,7 +61,11 @@ const CardStyles = styled("div")(({ theme }) => ({
 
 export default function PatientCard(props) {
 
-  const { _id, name, birthDate, email, address } = props.dataApi
+  const {
+    _id,
+    name,
+    birthDate,
+    email } = props.dataApi
 
   const navigate = useNavigate();
 
@@ -73,67 +83,46 @@ export default function PatientCard(props) {
               padding: '5px',
               background: 'white',
               textTransform: 'capitalize',
-              fontWeight: 'bolder'
+              fontWeight: 'bolder',
+              height: '75px'
             }} >
-            <small>Name: </small> <br /> {name}
+            <small>Name: </small> <br />
+            <Typography sx={{ textAlign: 'center' }}>{name}</Typography>
           </Typography>
 
           <hr style={{ color: '#2B93DD' }} />
           <Typography sx={{ mb: 1.5 }} >
-            <small>Birth Date: </small> {birthDate}
+            <small>Birth Date:</small>
+            &ensp;<big>{birthDate}</big>
           </Typography>
-          <Typography sx={{ mb: 1.5 }} >
-            <small>Email: </small> {email}
+          <Typography sx={{ mb: 1.5, height: '70px' }}>
+            <small>Email: </small><br />
+            <p style={{ textAlign: 'center', background: 'white', }}>{email}</p>
           </Typography>
-
-          <details style={{ cursor: 'pointer', background: '#f4fbff', padding: '5px' }}>
-            <hr style={{ color: '#2B93DD' }} />
-            <summary className='detalhesName'>Address</summary>
-            <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Zip Code:</small>
-              <br />
-              {address.zipCode}
-            </Typography>
-
-            <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Country: </small>
-              <br />
-              {address.country}
-            </Typography>
-
-            <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>County: </small>
-              <br />
-              {address.county}
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>City: </small>
-              <br />
-              {address.city}
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Street address: </small>
-              <br />
-              {address.streetAddress}
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} variant="body2">
-              <small>Apt, suite, etc: </small>
-              <br />
-              {address.addition}
-            </Typography>
-          </details>
-
         </CardContent>
+
         <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-          <Button onClick={() => navigate(`/editPatient/${_id}`)} title={name + " Data"}>
-            <EditIcon />Edit
+          <Button variant="outlined" 
+            sx={{
+              width:'45%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'}}
+            onClick={() => navigate(`/editPatient/${_id}`)}
+            title={name + " Data"}>
+            <EditIcon /> Edit
           </Button>
 
-          <ConfirmDeletePatient />
-
-          <Button onClick={() => navigate(`/patient/${_id}`)} title={name + " Data"}>
-            <PersonIcon />
+          <Button variant="outlined"
+            sx={{
+              width:'45%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'}}
+            onClick={() => navigate(`/patient/${_id}`)}
+            title={ "Data and options" }>
+            Patient <PersonIcon />
           </Button>
 
         </CardActions>

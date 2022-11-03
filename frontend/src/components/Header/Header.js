@@ -1,7 +1,10 @@
-import './Header.scss'
-import medcloudLogo from '../../assets/images/medcloud.png'
-import { Nav } from '../Nav'
+import './Header.scss';
 
+// Assets Images
+import medcloudLogo from '../../assets/images/medcloud.png';
+
+// Components
+import { Nav } from '../Nav';
 
 export function Header() {
     return (
