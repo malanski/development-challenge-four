@@ -167,12 +167,7 @@ export const EditPatient = () => {
                 <h2>
                     <EditIcon />&ensp;Edit Patient Data&ensp;<EditIcon />
                 </h2>
-                <Button
-                    variant="contained"
-                    sx={{opacity:'0.4'}}
-                    onClick={() => navigate(`/patient/${id}`)} title={`Back to ${state.name} page`}>
-                   <br/>{state.name} data
-                </Button>
+                
             </div>
             <p>Change the fields you want to update and save your changes in the button below.</p>
             <FormStyles >
@@ -300,6 +295,7 @@ export const EditPatient = () => {
                         <Button
                             variant="contained"
                             type='submit'
+                            title='Update patient data'
                             sx={{
                                 width: '183px',
                                 margins: '0 auto',
