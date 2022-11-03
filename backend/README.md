@@ -20,7 +20,9 @@ This project was developed with the following technologies:
 - Express
 - Mogoose - MongoDB (Atlas)
 - JSON
-
+- dotenv
+- Heroku
+  
 <hr>
   
 ## **IMPORTANT**  
@@ -28,10 +30,10 @@ You need to create a `.env` file in the backend root with a MongoDb (Atlas) User
   
 ## **Requirements**
 - Node.js;
-- Heroku account (to cloud deploy)
-- MongoDB Atlas Account (to create a Username and password)
+- Heroku account 
+- MongoDB Atlas Account
 - npm or yarn;
-- Frontend: [https://github.com/malanski/development-challenge-four/tree/main/frontend/](https://github.com/malanski/development-challenge-four/tree/main/frontend)
+- Frontend repository: [https://github.com/malanski/development-challenge-four/tree/main/frontend/](https://github.com/malanski/development-challenge-four/tree/main/frontend)
 
 ## **Installations**
 `npm install`

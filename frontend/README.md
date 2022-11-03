@@ -23,14 +23,15 @@ This project was developed with the following technologies:
 - React useForm 
 - Material-UI 
 - Yup 
-- Axios 
+- Axios
+- Vercel
 
 <hr>
 
 ## **Requirements**
 - Node.js;
 - npm or yarn;
-- Backend: [https://github.com/malanski/development-challenge-four/tree/main/backend/](https://github.com/malanski/development-challenge-four/tree/main/backend)
+- Backend repository: [https://github.com/malanski/development-challenge-four/tree/main/backend/](https://github.com/malanski/development-challenge-four/tree/main/backend)
 - Backend Deploy: [https://my-register-backend.herokuapp.com](https://my-register-backend.herokuapp.com)
 
 ## **Installations**
