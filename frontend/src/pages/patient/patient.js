@@ -55,19 +55,14 @@ export const Patient = () => {
                     birthDate: patient.birthDate,
                     address: patient.address,
                 });
-            })
-            .catch(function (error) {
+            }).catch(function (error) {
                 console.log(error);
             });
     }, [id]);
 
-    function deletePatient(_id) {
-        // alert("This is the deleted id " + state._id)
-        PatientApi.deletePatient(id)
-            .then((response) => {
-                console.log(response)
-
-            })
+    async function deletePatient(_id) {
+       await PatientApi.deletePatient(id);
+       navigate('/viewPatients');
     }
 
     const [open, setOpen] = React.useState(false);
@@ -166,15 +161,13 @@ export const Patient = () => {
 
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                                    <div onClick={() => navigate(`/viewPatients`)}>
-                                        <Button sx={{ width: '176px', height: '40px', margin: '10px 10px 0 0' }} variant="contained"
-                                            onClick={() => deletePatient()}
-                                            color="success"
-                                            title="Delete patient record">
-                                            <DeleteForeverTwoToneIcon />
-                                            Confirm Delete
-                                        </Button>
-                                    </div>
+                                    <Button sx={{ width: '176px', height: '40px', margin: '10px 10px 0 0' }} variant="contained"
+                                        onClick={() => deletePatient()}
+                                        color="success"
+                                        title="Delete patient record">
+                                        <DeleteForeverTwoToneIcon />
+                                        Confirm Delete
+                                    </Button>
 
                                     <Button sx={{ width: '176px', height: '40px', margin: '10px 0 0 0' }} variant="outlined"
                                         color="error"

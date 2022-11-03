@@ -5,7 +5,7 @@ Back-end application to register patients
 
 <hr>
 
-## **API Access Deploy**
+## **API Heroku Cloud Deploy**
 [https://my-register-backend.herokuapp.com](https://my-register-backend.herokuapp.com)
 
 <hr>
@@ -22,21 +22,38 @@ This project was developed with the following technologies:
 - JSON
 
 <hr>
-
+  
+## **IMPORTANT**  
+You need to create a `.env` file in the backend root with a MongoDb (Atlas) Username(DB_USER) and password(DB_PASS).
+  
 ## **Requirements**
 - Node.js;
+- Heroku account (to cloud deploy)
+- MongoDB Atlas Account (to create a Username and password)
 - npm or yarn;
 - Frontend: [https://github.com/malanski/development-challenge-four/tree/main/frontend/](https://github.com/malanski/development-challenge-four/tree/main/frontend)
 
 ## **Installations**
 `npm install`
-
+   
+<hr>
 ## **endPoints**
 
--POST: /patients
-
--GET, PATCH and DELETE: /patients/:id
+- POST: /patients
+ - Create patient
+    
+- GET: /patients
+ - Read all patients.
+    
+- GET: /patients/:id
+ - Read (search) patient by id.
+     
+- PATCH: /patients/:id
+ - Update patient data by id.
   
+- DELETE: /patients/:id
+ - Delete patient by id.
+   
 ## **Project Clone**
 HTTPS  
 `git clone https://github.com/malanski/development-challenge-four.git`

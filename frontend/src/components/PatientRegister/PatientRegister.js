@@ -91,7 +91,7 @@ export function PatientRegister() {
     const { register, formState: { errors }, handleSubmit, getValues } = useForm({ resolver: yupResolver(schema) });
     const navigate = useNavigate();
 
-    const submitForm = (data) => {
+    const submitForm = async (data) => {
         const dataBirthDate = getValues('birthDate');
         const birthDate = dataBirthDate.split('-');
         const newBirthDate = `${birthDate[2]}-${birthDate[1]}-${birthDate[0]}`;
@@ -109,7 +109,8 @@ export function PatientRegister() {
                 addition: data.addition,
             },
         };
-        PatientApi.registerPatient(dataRegister);
+        
+        await PatientApi.registerPatient(dataRegister);
         navigate('/viewPatients')
     }
 

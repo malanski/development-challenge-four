@@ -99,7 +99,7 @@ export const EditPatient = () => {
         reset
     } = useForm({ resolver: yupResolver(schema) });
 
-    const submitForm = (data) => {
+    const submitForm = async (data) => {
         const dataBirthDate = getValues('birthDate');
         const birthDate = dataBirthDate.split('-');
         const newBirthDate = `${birthDate[2]}-${birthDate[1]}-${birthDate[0]}`;
@@ -117,9 +117,7 @@ export const EditPatient = () => {
                 addition: data.addition,
             },
         };
-
-        PatientApi.updatePatient(id, dataUpdate);
-        // alert('deu certo')
+        await PatientApi.updatePatient(id, dataUpdate);
         navigate('/viewPatients')
     }
 
@@ -288,7 +286,8 @@ export const EditPatient = () => {
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center' }}>
-                        <Button onClick={() => navigate(`/patient/${id}`)} title={`Back to ${state.name} page`}>
+                        <Button onClick={() => navigate(`/patient/${id}`)}
+                            title={`Back to ${state.name} page`}>
                             <KeyboardDoubleArrowLeftIcon />
                             Back
                         </Button>
@@ -313,9 +312,6 @@ export const EditPatient = () => {
                             </div>
                         </Button>
                     </div>
-                    
-
-
                 </Box>
             </FormStyles>
 

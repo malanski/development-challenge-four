@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
-// const mongoose = require('../database');
 
-// const userName = 'ulisses';
-// const password = 'Tvm7HQSqEiirEAg';
-const userName = 'malanski';
-const password = 'zF4xgksa2HUSQwyY';
+require("dotenv").config();
+
+// MongoDb Atlas USER and PASSWORD 
+const userName = process.env.DB_USER
+const password = process.env.DB_PASS
 
 const url = `mongodb+srv://${userName}:${password}@cluster0.vphfkrk.mongodb.net/?retryWrites=true&w=majority`;
-          // mongodb+srv://ulisses:<password>     @cluster0.vphfkrk.mongodb.net/?retryWrites=true&w=majority
-
 
 mongoose.connect(url, {},  (error) => {
     if (error) {
@@ -17,7 +15,6 @@ mongoose.connect(url, {},  (error) => {
         return;
     }
     console.log("You are connected to mongoose database");
-
 });
 
 mongoose.Promise = global.Promise;

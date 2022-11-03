@@ -7,9 +7,9 @@ const router = express.Router();
 router.post('/patients', async (req, res) => {
     try {
         const { email } = req.body;
+        const patient = await UserModel.findOne({ email });
 
-        // Check if email already exists
-        if (await UserModel.findOne({ email })) {
+        if (patient) {
             return res.status(400).json({
                 error: true,
                 message: "A patients already exists with this email!"
@@ -18,13 +18,13 @@ router.post('/patients', async (req, res) => {
 
         const patients = await UserModel.create(req.body);
 
-        return res.status(200).json({
-            patients,
+        res.status(200).json({
+            patient,
             error: false,
             message: "Patient registration successfully!"
         });
     } catch (error) {
-        throw res.status(400).json({
+        res.status(400).json({
             error: true,
             message: error.message
         })
@@ -43,14 +43,14 @@ router.get('/patients', async (req, res) => {
                 message: "This patient is not register!"
             });
         }
-        return res.status(200).json({
+        res.status(200).json({
             patients,
             error: false,
             message: "The patient has been found!"
         });
 
     } catch (error) {
-        throw res.status(400).json({
+        res.status(400).json({
             error: true,
             message: error.message
         });
@@ -70,14 +70,14 @@ router.get('/patients/:id', async(req, res) => {
             }); 
         }
         
-        return res.status(200).json({
+        res.status(200).json({
             patient,
             error: false,
             message: 'The patient has been found!'
         }); 
 
     } catch (error) {
-        throw res.status(400).json({
+        res.status(400).json({
             error: true,
             message: error.message
         });
@@ -100,14 +100,14 @@ router.patch('/patients/:id', async (req, res) => {
 
         patient = await UserModel.findOne({ _id });
 
-        return res.status(200).json({
+        res.status(200).json({
             patient,
             error: false,
             message: "The patient has been updated successfully"
         })
         
     } catch (error) {
-        throw res.status(400).json({
+        res.status(400).json({
             error: true,
             message: error.message
         });
@@ -128,14 +128,14 @@ router.delete('/patients/:id', async(req, res) => {
         }
         await UserModel.deleteOne({_id});
 
-        return res.status(200).json({
+        res.status(200).json({
             patient,
             error: false,
             message: "Patient deleted successfully!"
         })
 
     } catch (error) {
-        throw res.status(400).json({
+        res.status(400).json({
             error: true,
             message: error.message 
         });
